@@ -46,20 +46,49 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-// router.route("/update/:id").put((req, res) => {
-//   Adress.findById(req.params.id)
-//     .then((adress) => {
-//       adress.street = req.body.street;
-//       adress.city = req.body.city;
-//       adress.postcode = req.body.postcode;
-//       adress.country = req.body.country;
+router.route("/edit/:id").put((req, res) => {
+  Invoice.findById(req.params.id)
+    .then((invoice) => {
+      invoice.street = req.body.street;
+      invoice.city = req.body.city;
+      invoice.postcode = req.body.postcode;
+      invoice.country = req.body.country;
+      invoice.client_name = req.body.client_name;
+      invoice.client_email = req.body.client_email;
+      invoice.client_street = req.body.client_street;
+      invoice.client_city = req.body.client_city;
+      invoice.client_postcode = req.body.client_postcode;
+      invoice.client_country = req.body.client_country;
+      invoice.invoice_date = Date.parse(req.body.invoice_date);
+      invoice.payment_date = Date.parse(req.body.payment_date);
+      invoice.project_description = req.body.project_description;
+      invoice.item_list = req.body.item_list;
 
-//       adress
-//         .save()
-//         .then(() => res.json("Adress updated!"))
-//         .catch((err) => res.status(400).json("Error: " + err));
-//     })
-//     .catch((err) => res.status(400).json("Error: " + err));
-// });
+      invoice
+        .save()
+        .then(() => res.json("Invoice updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/status/:id").put((req, res) => {
+  Invoice.findById(req.params.id)
+    .then((invoice) => {
+      invoice.status = req.body.status;
+
+      invoice
+        .save()
+        .then(() => res.json("Invoice status updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/:id").delete((req, res) => {
+  Invoice.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Invoice deleted"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 module.exports = router;
