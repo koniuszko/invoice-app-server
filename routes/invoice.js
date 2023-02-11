@@ -7,6 +7,12 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/preview/:id").get((req, res) => {
+  Invoice.findById(req.params.id)
+    .then((invoice) => res.json(invoice))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/add").post((req, res) => {
   const street = req.body.street;
   const city = req.body.city;
