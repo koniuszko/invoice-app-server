@@ -52,6 +52,12 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/edit/:id").get((req, res) => {
+  Invoice.findById(req.params.id)
+    .then((invoice) => res.json(invoice))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 router.route("/edit/:id").put((req, res) => {
   Invoice.findById(req.params.id)
     .then((invoice) => {
