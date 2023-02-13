@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/258a436a-6ece-49f1-b3ff-94bf030d6cb9/AppServices/subscriptions/258a436a-6ece-49f1-b3ff-94bf030d6cb9/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/invoice-backend",
+  "appService.deploySubpath": "."
+}
