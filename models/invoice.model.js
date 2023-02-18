@@ -26,71 +26,79 @@ const invoiceSchema = new Schema(
   {
     status: {
       type: String,
-      required: true,
+      // required: true,
       enum: ["draft", "pending", "paid"],
       default: "draft",
     },
     street: {
       type: String,
       required: true,
-      trim: true,
-      minLength: 5,
+      // trim: true,
+
+      default: "",
     },
     city: {
       type: String,
       required: true,
-      trim: true,
-      minLength: 3,
+      // trim: true,
+
+      default: "",
     },
     postcode: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
-      maxLength: 9,
+
+      default: "",
     },
     country: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
+
+      default: "",
     },
     client_name: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
+
+      default: "",
     },
     client_email: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
+
+      default: "",
     },
     client_street: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 5,
+
+      default: "",
     },
     client_city: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
+
+      default: "",
     },
     client_postcode: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
-      maxLength: 9,
+
+      default: "",
     },
     client_country: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
+
+      default: "",
     },
     invoice_date: {
       type: Date,
@@ -102,13 +110,15 @@ const invoiceSchema = new Schema(
     },
     project_description: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
-      minLength: 3,
+
+      default: "",
     },
     item_list: {
       type: [itemSchema],
       required: true,
+      default: [],
     },
   },
   { timestamps: true }
