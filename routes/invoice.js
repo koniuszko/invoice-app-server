@@ -104,6 +104,7 @@ router.route("/edit/:id").get((req, res) => {
 router.route("/edit/:id").put((req, res) => {
   Invoice.findById(req.params.id)
     .then((invoice) => {
+      invoice.status = "pending";
       invoice.street = req.body.street;
       invoice.city = req.body.city;
       invoice.postcode = req.body.postcode;
@@ -127,10 +128,10 @@ router.route("/edit/:id").put((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/status/:id").put((req, res) => {
+router.route("/paid/:id").put((req, res) => {
   Invoice.findById(req.params.id)
     .then((invoice) => {
-      invoice.status = req.body.status;
+      invoice.status = "paid";
 
       invoice
         .save()

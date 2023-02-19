@@ -5,99 +5,78 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
   item_name: {
     type: String,
-    required: true,
     trim: true,
-    minLength: 3,
+    default: "",
   },
   quantity: {
     type: Number,
-    required: true,
+    default: 0,
   },
   price: {
     type: Number,
-    required: true,
+    default: 0,
   },
   total: {
     type: Number,
-    required: true,
+    default: 0,
   },
 });
 const invoiceSchema = new Schema(
   {
     status: {
       type: String,
-      // required: true,
       enum: ["draft", "pending", "paid"],
       default: "draft",
     },
     street: {
       type: String,
-      required: true,
-      // trim: true,
-
+      trim: true,
       default: "",
     },
     city: {
       type: String,
       required: true,
-      // trim: true,
-
       default: "",
     },
     postcode: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     country: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     client_name: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     client_email: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     client_street: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     client_city: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     client_postcode: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     client_country: {
       type: String,
-      // required: true,
-      trim: true,
 
+      trim: true,
       default: "",
     },
     invoice_date: {
@@ -110,9 +89,7 @@ const invoiceSchema = new Schema(
     },
     project_description: {
       type: String,
-      // required: true,
       trim: true,
-
       default: "",
     },
     item_list: {
