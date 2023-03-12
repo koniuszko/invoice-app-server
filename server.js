@@ -18,11 +18,11 @@ connection.once("open", () => {
 });
 
 const invoicesRouter = require("./routes/invoice");
-const adressRouter = require("./routes/adress");
+const addressRouter = require("./routes/address");
 
 app.use("/invoices", invoicesRouter);
-app.use("/adress", adressRouter);
+app.use("/address", addressRouter);
 
 app.listen(port, () => {
-  console.log(`Server is runing on port: ${port}`);
+  console.log(`Server is running on port: ${port}`);
 });

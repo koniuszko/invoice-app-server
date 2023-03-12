@@ -1,9 +1,9 @@
 const router = require("express").Router();
-let Adress = require("../models/adress.model");
+let Address = require("../models/adress.model");
 
 router.route("/").get((req, res) => {
-  Adress.find()
-    .then((adress) => res.json(adress))
+  Address.find()
+    .then((address) => res.json(address))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
@@ -13,25 +13,25 @@ router.route("/add").post((req, res) => {
   const postcode = req.body.postcode;
   const country = req.body.country;
 
-  const newAdress = new Adress({ street, city, postcode, country });
+  const newAddress = new Address({ street, city, postcode, country });
 
-  newAdress
+  newAddress
     .save()
-    .then(() => res.json("Adress added!"))
+    .then(() => res.json("Address added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/update/:id").put((req, res) => {
-  Adress.findById(req.params.id)
-    .then((adress) => {
-      adress.street = req.body.street;
-      adress.city = req.body.city;
-      adress.postcode = req.body.postcode;
-      adress.country = req.body.country;
+  Address.findById(req.params.id)
+    .then((address) => {
+      address.street = req.body.street;
+      address.city = req.body.city;
+      address.postcode = req.body.postcode;
+      address.country = req.body.country;
 
-      adress
+      address
         .save()
-        .then(() => res.json("Adress updated!"))
+        .then(() => res.json("Address updated!"))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
